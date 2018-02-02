@@ -1,0 +1,26 @@
+{
+  "name": "domusto-gpio",
+  "version": "0.0.1",
+  "description": "Domusto Home Automation plugin to control Philips HUE devices",
+  "main": "index.js",
+  "dependencies": {
+    "node-hue-api": "^2.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/basvdijk/domusto-philips-hue.git"
+  },
+  "keywords": [
+    "domusto"
+  ],
+  "author": "Bas van Dijk",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/basvdijk/domusto-philips-hue/issues"
+  },
+  "homepage": "https://github.com/basvdijk/domusto-philips-hue#readme"
+}
