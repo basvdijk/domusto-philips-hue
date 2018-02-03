@@ -62,8 +62,8 @@ class DomustoPhilipsHue extends DomustoPlugin {
                 this.refreshPhilipsHueStatus();
             }, 100);
 
-            // // Start polling receiver on interval
-            // setInterval(() => this.refreshReceiverStatus(), pluginConfiguration.settings.pollInterval | 10000);
+            // // Start polling Philips HUE on interval to detect changes by hardware switches
+            setInterval(() => this.refreshPhilipsHueStatus(), pluginConfiguration.settings.pollInterval | 10000);
 
             this.console.header(`${pluginConfiguration.id} plugin ready for sending / receiving data`);
 
