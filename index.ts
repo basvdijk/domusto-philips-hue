@@ -81,10 +81,9 @@ class DomustoPhilipsHue extends DomustoPlugin {
 
         if (this.isLight(signal.deviceId)) {
             this.setLightStatus(signal.deviceId, signal.data['state']);
+        } else if (this.isGroup(signal.deviceId)) {
+            this.setGroupStatus(signal.deviceId, signal.data['state']);
         }
-        // } else if (this.isGroup(signal.deviceId)) {
-        //     this.setGroupStatus(signal.deviceId, signal.data['state']);
-        // }
 
     }
 
@@ -109,13 +108,13 @@ class DomustoPhilipsHue extends DomustoPlugin {
         let hueState = lightState.create();
 
         if (state === 'on') {
-            this.hardwareInstance.setLightState(lightId, hueState.on()).then(res => {
+            this.hardwareInstance.setLightState(lightId.substr(1), hueState.on()).then(res => {
                 this.broadcastSignal(lightId, {
                     state: 'on'
                 });
             });
         } else if (state === 'off') {
-            this.hardwareInstance.setLightState(lightId, hueState.off()).then(res => {
+            this.hardwareInstance.setLightState(lightId.substr(1), hueState.off()).then(res => {
                 this.broadcastSignal(lightId, {
                     state: 'off'
                 });
@@ -129,13 +128,13 @@ class DomustoPhilipsHue extends DomustoPlugin {
         let hueState = lightState.create();
 
         if (state === 'on') {
-            this.hardwareInstance.setGroupLightState(groupId, hueState.on()).then(res => {
+            this.hardwareInstance.setGroupLightState(groupId.substr(1), hueState.on()).then(res => {
                 this.broadcastSignal(groupId, {
                     state: 'on'
                 });
             });
         } else if (state === 'off') {
-            this.hardwareInstance.setGroupLightState(groupId, hueState.off()).then(res => {
+            this.hardwareInstance.setGroupLightState(groupId.substr(1), hueState.off()).then(res => {
                 this.broadcastSignal(groupId, {
                     state: 'off'
                 });
@@ -148,7 +147,7 @@ class DomustoPhilipsHue extends DomustoPlugin {
 
         this.console.log('Getting status for light', lightId);
 
-        this.hardwareInstance.lightStatus(lightId).then(displayStatus => {
+        this.hardwareInstance.lightStatus(lightId.substr(1)).then(displayStatus => {
             this.broadcastSignal(lightId, {
                 state: displayStatus ? 'on' : 'off'
             });
