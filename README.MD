@@ -9,6 +9,12 @@ website:      http://domusto.com
 description:  Control Philips HUE devices
 ```
 
+## Features
+- [x] Fetch light/group state on start
+- [x] Turn light/group on/off
+- [ ] Set light/group brightness
+- [ ] Set light/group color
+
 ## Hardware needed
 - Philips HUE bridge
 - Philips HUE devices
